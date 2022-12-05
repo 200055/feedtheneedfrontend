@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
@@ -6,18 +6,12 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const ChangePassword = () => {
-	// const [details, setDetails] = useState('');
 	const [currentPassword, setcurrentPassword] = useState('');
 
     const [newPassword, setnewPassword] = useState('');
     const [confirmNewPassword, setconfirmNewPassword] = useState('');    
     const [message, setMessage] = useState('');
 	
-    const config = {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('adminticket'),
-        }
-    }
     
     const updatePassword = (e) => {
         e.preventDefault()
@@ -87,6 +81,7 @@ const ChangePassword = () => {
 	<div>
 		<label className="text-gray-600 font-medium">Current Password</label>
 		<input 
+        id="currentPassword"
 		onChange={(e) => {setcurrentPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
         name="title" placeholder="Insert Current Password" />
@@ -95,6 +90,7 @@ const ChangePassword = () => {
 	<div>
 		<label className="text-gray-600 font-medium">New Password</label>
 		<input 
+        id="newPassword"
 		onChange={(e) => {setnewPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
         name="title" placeholder="Insert New Password" />
@@ -103,12 +99,14 @@ const ChangePassword = () => {
         
 		<label className="text-gray-600 font-medium">Confirm New Password</label>
 		<input 
+        id="confirmNewPassword"
 		onChange={(e) => {setconfirmNewPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
         name="title" placeholder="Insert Confirm New Password." resize/>
 	</div>
 
   <button
+    id="changePasswordBtn"
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
     type="submit"
   >

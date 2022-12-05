@@ -1,5 +1,5 @@
-Feature: To Login 
-  As a user, I need to login to the system after registration, so that I can access the system.
+Feature: To Update Contact  
+  As an admin, I need to update contacts, so that I can change the company contact information when needed.
 
-  Scenario: User provides Email address and password and press login button to get access to backend of application
+  Scenario: Admin provides  company name, address, phone and when it is founded and press submit button to update contact details
     Given Test update contact functionality

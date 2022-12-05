@@ -1,6 +1,6 @@
-Feature: To Register 
-   As a user, I need to register to the system by creating an account, so that I can use the system
+Feature: To Add Staff 
+   As an admin, I need to register staff, so that I can give them access to the system.
 
-  Scenario: User provides full name, email, last name, and password and press register button to get registered in the application
+  Scenario: Admin provides  email, username and password and press submit button to insert new staff
     Given Test add staff functionality
     

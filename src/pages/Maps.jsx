@@ -75,6 +75,7 @@ const Contact = () => {
           <div className="flex flex-col gap-3">
               <label className="text-gray-600 font-medium text-xl">Latitude</label>
               <input 
+              id="lat"
               value={lat}
               onChange={(e) => {setlat(e.target.value)}}
               className="border-solid border-gray-300 border h-14 py-2 px-4 w-full"
@@ -84,6 +85,7 @@ const Contact = () => {
             
               <label className="text-gray-600 font-medium text-xl">Longitude</label>
               <input 
+              id="long"
               value={long}
               onChange={(e) => {setlong(e.target.value)}}
               className="border-solid border-gray-300 border h-14 py-2 px-4 w-full"
@@ -92,6 +94,7 @@ const Contact = () => {
           </div>
           
           <button
+            id="updateMapsBtn"
             className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
             type="submit"
           >

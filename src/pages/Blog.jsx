@@ -1,6 +1,5 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
-// import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {Link} from "react-router-dom";
@@ -75,9 +74,6 @@ const Blog = () => {
               <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                 Blog Short Description</th>
-              {/* <th
-                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                Created_At</th> */}
               <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3">
                 Action</th>
             </tr>
