@@ -80,7 +80,7 @@ const ChangePassword = () => {
 		<DashboardStatsGrid />
 		</div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={updatePassword}
 >
 	<div className="text-gray-600 font-medium text-3xl">Update Password</div>
@@ -88,26 +88,24 @@ const ChangePassword = () => {
 		<label className="text-gray-600 font-medium">Current Password</label>
 		<input 
 		onChange={(e) => {setcurrentPassword(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Current Password" />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Current Password" />
 	</div>
 
 	<div>
 		<label className="text-gray-600 font-medium">New Password</label>
 		<input 
 		onChange={(e) => {setnewPassword(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert New Password" />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert New Password" />
 	</div>
-	
-	
 	<div>
         
 		<label className="text-gray-600 font-medium">Confirm New Password</label>
 		<input 
 		onChange={(e) => {setconfirmNewPassword(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Confirm New Password." resize/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Confirm New Password." resize/>
 	</div>
 
   <button
