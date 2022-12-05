@@ -3,6 +3,7 @@ import axios from "axios";
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "./Maps.scss"
 
 const AddPartner = () => {
     const [partner_name, setpartner_name] = useState('');
@@ -50,32 +51,32 @@ const AddPartner = () => {
 		<DashboardStatsGrid />
 		</div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={AddBlog}
 >
 	
 	<div className="text-gray-600 font-medium text-3xl">Add Partner</div>
 	<div>
-		<label className="text-gray-600 font-medium">Partner Name</label>
+		<label className="text-gray-600 font-medium text-xl">Partner Name</label>
 		<input 
 		onChange={(e) => {setpartner_name(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder=" Add Partner Name" autoFocus required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder=" Add Partner Name" autoFocus required />
 	</div>
 
 	<div>
-		<label className="text-gray-600 font-medium">Patner Category</label>
+		<label className="text-gray-600 font-medium text-xl">Patner Category</label>
 		<input 
 		onChange={(e) => {setpartner_category(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Add Patner Category" autoFocus required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Add Patner Category" autoFocus required />
 	</div>
   
-	<label class="text-gray-600 font-medium" for="file_input">Partner Image</label>
+	<label class="text-gray-600 font-medium text-xl" for="file_input">Partner Image</label>
 	<input 
 	onChange={(e) => {setpartner_image(e.target.files[0])}}
-	class="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" id="file_input" type="file" required/>
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+    id="file_input" type="file" required/>
 	
   <button
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"

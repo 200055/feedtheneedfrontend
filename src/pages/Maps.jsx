@@ -3,6 +3,7 @@ import axios from "axios";
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "./Maps.scss"
 
 
 const Contact = () => {
@@ -64,39 +65,40 @@ const Contact = () => {
 		<div>
 		<DashboardStatsGrid />
 		</div>
-        <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
-  onSubmit={updateMaps}
->
-	<div className="text-gray-600 font-medium text-3xl">Update Map Details</div>
-	<div>
-		<label className="text-gray-600 font-medium">Latitude</label>
-		<input 
-		value={lat}
-		onChange={(e) => {setlat(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Latitude" />
-	</div>
 
-	<div>
-		<label className="text-gray-600 font-medium">Longitude</label>
-		<input 
-		value={long}
-		onChange={(e) => {setlong(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Longitude" />
-	</div>
-	
-  <button
-    className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
-    type="submit"
-  >
-    Submit
-  </button>
-  <ToastContainer/>
-</form>
-  
-    
+                <form
+          className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg "
+          onSubmit={updateMaps}
+        >
+
+          <div className="text-gray-600 font-medium text-3xl py-1">Update Map Details</div>
+          <div className="flex flex-col gap-3">
+              <label className="text-gray-600 font-medium text-xl">Latitude</label>
+              <input 
+              value={lat}
+              onChange={(e) => {setlat(e.target.value)}}
+              className="border-solid border-gray-300 border h-14 py-2 px-4 w-full"
+              name="title" placeholder="Insert Latitude" />
+            
+
+            
+              <label className="text-gray-600 font-medium text-xl">Longitude</label>
+              <input 
+              value={long}
+              onChange={(e) => {setlong(e.target.value)}}
+              className="border-solid border-gray-300 border h-14 py-2 px-4 w-full"
+              name="title" placeholder="Insert Longitude" />
+            
+          </div>
+          
+          <button
+            className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
+            type="submit"
+          >
+            Submit
+          </button>
+          <ToastContainer/>
+        </form>
 
         </>
     )

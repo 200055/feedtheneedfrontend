@@ -4,6 +4,7 @@ import axios from "axios"
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "./Maps.scss"
 
 const AddStaff= ()=> {
     const [username, setUsername] = useState('');
@@ -57,41 +58,41 @@ const AddStaff= ()=> {
 		<DashboardStatsGrid />
 		<div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={registerStaff}
 >
 	<div className="text-gray-600 font-medium text-3xl">Add Staff</div>
 	<div>
 		<label className="text-gray-600 font-medium">Username</label>
 		<input 
+        id="username"
 		onChange={(e) => {setUsername(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="JohnDoe" required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="JohnDoe" required />
 	</div>
 
 	<div>
 		<label className="text-gray-600 font-medium">Email</label>
 		<input 
         type="email"
+        id="email"
 		onChange={(e) => {setEmail(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="jhon@email.com" required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="jhon@email.com" required />
 	</div>
 
 	<div>
 		<label className="text-gray-600 font-medium">Password</label>
 		<input 
+        id="password"
         type="password"
 		onChange={(e) => {setPassword(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="******" required/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="******" required/>
 	</div>
 
-  
-  
-
-
   <button
+    id="addStaffBtn"
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
     type="submit"
   >

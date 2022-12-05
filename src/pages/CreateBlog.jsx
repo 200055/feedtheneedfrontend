@@ -3,6 +3,7 @@ import axios from "axios";
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "./Maps.scss"
 
 const CreateBlog = () => {
     const [blog_name, setblog_name] = useState('');
@@ -56,7 +57,7 @@ const CreateBlog = () => {
 		<DashboardStatsGrid />
 		</div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={AddBlog}
 >
 	
@@ -64,34 +65,38 @@ const CreateBlog = () => {
 	<div>
 		<label className="text-gray-600 font-medium">Blog Title</label>
 		<input 
+        id="blogTitle"
 		onChange={(e) => {setblog_name(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Title" autoFocus required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Title" autoFocus required />
 	</div>
 
 	<div>
 		<label className="text-gray-600 font-medium">Blog Short Description</label>
 		<input 
+        id="shortDesc"
 		onChange={(e) => {setshort_desc(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Short Description" autoFocus required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Short Description" autoFocus required />
 	</div>
 	
 	
 	<div>
 		<label className="text-gray-600 font-medium">Blog Description</label>
 		<textarea 
+        id="blogDesc"
 		onChange={(e) => {setblog_desc(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Description." autoFocus required resize/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Description." autoFocus required resize/>
 	</div>
 
 	<div>
 		<label className="text-gray-600 font-medium">Blog Category</label>
 		<input 
+        id="blogCategory"
 		onChange={(e) => {setblog_category(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Category" required/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Category" required/>
 	</div>
 
   
@@ -99,8 +104,8 @@ const CreateBlog = () => {
 	<label class="text-gray-600 font-medium" for="file_input">Upload file</label>
 	<input 
 	onChange={(e) => {setblog_image(e.target.files[0])}}
-	class="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" id="file_input" type="file" required/>
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+    id="file_input" type="file" required/>
 	
   <button
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"

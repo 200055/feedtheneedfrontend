@@ -4,6 +4,7 @@ import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "./Maps.scss"
 
 
 const Contact = () => {
@@ -70,53 +71,55 @@ const Contact = () => {
 		<div>
 		<DashboardStatsGrid />
 		</div>
+        
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={updateContact}
 >
-	<div className="text-gray-600 font-medium text-3xl">Update Contacts</div>
+    <div className="text-gray-600 font-medium text-3xl">Update Contacts</div>
 	<div>
-		<label className="text-gray-600 font-medium">Company Name</label>
+		<label className="text-gray-600 font-medium text-xl">Company Name</label>
 		<input 
+        id="companyName"
 		value={company_name}
 		onChange={(e) => {setcompany_name(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Company Name" />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+         name="title" placeholder="Insert Company Name" required/>
 	</div>
 
 	<div>
-		<label className="text-gray-600 font-medium">Company Address</label>
-		<input 
+		<label className="text-gray-600 font-medium text-xl">Company Address</label>
+		<input
+        id="companyAddress" 
 		value={company_address}
 		onChange={(e) => {setcompany_address(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Company Address" />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+         name="title" placeholder="Insert Company Address" required />
 	</div>
 	
 	
 	<div>
-		<label className="text-gray-600 font-medium">Company Phone</label>
+		<label className="text-gray-600 font-medium text-xl">Company Phone</label>
 		<input 
+        id="companyPhone"
 		value={company_phone}
 		onChange={(e) => {setcompany_phone(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Company Phone." resize/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+         name="title" placeholder="Insert Company Phone." required/>
 	</div>
 
 	<div>
-		<label className="text-gray-600 font-medium">Company Founded</label>
+		<label className="text-gray-600 font-medium text-xl">Company Founded</label>
 		<input 
+        id="companyFounded"
 		value={company_founded}
 		onChange={(e) => {setcompany_founded(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Company Founded" />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+         name="title" placeholder="Insert Company Founded" required />
 	</div>
 
-  
-  
-
-
   <button
+    id="updateBtn"
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"
     type="submit"
   >

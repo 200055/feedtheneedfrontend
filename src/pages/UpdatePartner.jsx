@@ -4,6 +4,7 @@ import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useParams } from 'react-router-dom'
+import "./Maps.scss"
 
 const UpdatePartner = () => {
     const {partner_id } = useParams();
@@ -66,36 +67,36 @@ const UpdatePartner = () => {
 		<DashboardStatsGrid />
 		</div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={Update}
 >
 	
 	<div className="text-gray-600 font-medium text-3xl">Edit Partner</div>
 	<div>
-		<label className="text-gray-600 font-medium">Partner Name</label>
+		<label className="text-gray-600 font-medium text-xl">Partner Name</label>
 		<input 
         value={partner_name}
 		onChange={(e) => {setpartner_name(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Update Partner Name"  required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Update Partner Name"  required />
 	</div>
 
 	<div>
-		<label className="text-gray-600 font-medium">Partner Category</label>
+		<label className="text-gray-600 font-medium text-xl">Partner Category</label>
 		<input 
         value={partner_category}
 		onChange={(e) => {setpartner_category(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Update Partner Name"  required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Update Partner Name"  required />
 	</div>
 	
 	
-	<label class="text-gray-600 font-medium" for="file_input">Upload file</label>
+	<label class="text-gray-600 font-medium text-xl" for="file_input">Upload file</label>
 	<input 
     // value={partner_image}
 	onChange={(e) => {setpartner_image(e.target.files[0])}}
-	class="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" id="file_input" type="file"/>
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+    id="file_input" type="file"/>
 	
   <button
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"

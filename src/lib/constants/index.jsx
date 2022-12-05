@@ -18,7 +18,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		path: '/dashboard',
 		icon: <HiOutlineViewGrid />
 	},
-	{
+	{	
 		key: 'addstaff',
 		label: 'Add Staff',
 		path: '/dashboard/viewstaff',

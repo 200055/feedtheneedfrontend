@@ -4,6 +4,7 @@ import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useParams } from 'react-router-dom'
+import "./Maps.scss"
 
 const UpdateBlog = () => {
     const {blog_id } = useParams();
@@ -73,7 +74,7 @@ const UpdateBlog = () => {
 		<DashboardStatsGrid />
 		</div>
         <form
-  className="w-full max-w-lg m-auto py-10 mt-10 px-10 border"
+  className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
   onSubmit={Update}
 >
 	
@@ -83,8 +84,8 @@ const UpdateBlog = () => {
 		<input 
         value={blog_name}
 		onChange={(e) => {setblog_name(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Title"  required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Title"  required />
 	</div>
 
 	<div>
@@ -92,8 +93,8 @@ const UpdateBlog = () => {
 		<input 
         value={short_desc}
 		onChange={(e) => {setshort_desc(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Short Description"  required />
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Short Description"  required />
 	</div>
 	
 	
@@ -102,8 +103,8 @@ const UpdateBlog = () => {
 		<textarea 
         value={blog_desc}
 		onChange={(e) => {setblog_desc(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Description." required resize/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Description." required resize/>
 	</div>
 
 	<div>
@@ -111,8 +112,8 @@ const UpdateBlog = () => {
 		<input 
         value={blog_category}
 		onChange={(e) => {setblog_category(e.target.value)}}
-		className="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" name="title" placeholder="Insert Category" required/>
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+        name="title" placeholder="Insert Category" required/>
 	</div>
 
   
@@ -121,8 +122,8 @@ const UpdateBlog = () => {
 	<input 
     // value={blog_image}
 	onChange={(e) => {setblog_image(e.target.files[0])}}
-	class="border-solid border-gray-300 border py-2 px-4 w-full
-		rounded text-gray-700" id="file_input" type="file"/>
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+    id="file_input" type="file"/>
 	
   <button
     className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border shadow py-3 px-6 font-semibold text-md rounded"

@@ -49,7 +49,7 @@ const ViewStaff = () => {
         <>
         <DashboardStatsGrid />
 
-		<div class="container max-w-8xl mx-auto mt-8">
+		<div class="container max-w-8xl mx-auto mt-8" id="viewStaff">
   <div class="mb-4">
     <h1 class="text-3xl font-bold decoration-gray-400">Staffs</h1>
     <div class="flex justify-end">
