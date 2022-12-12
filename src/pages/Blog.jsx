@@ -74,6 +74,12 @@ const Blog = () => {
               <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                 Blog Short Description</th>
+                <th
+                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                Blog Price</th>
+                <th
+                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                Donor Image</th>
               <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3">
                 Action</th>
             </tr>
@@ -96,6 +102,16 @@ const Blog = () => {
 
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <p>{singleData.short_desc}</p>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <p>{singleData.blog_price}</p>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              <div class="flex items-center">
+                <img className="object-scale-down h-20 w-20 transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl"  src={"http://localhost:90/" + singleData.donor_image}/>
+                </div>
               </td>
 
               {/* <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">

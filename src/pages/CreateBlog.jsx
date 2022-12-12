@@ -12,6 +12,9 @@ const CreateBlog = () => {
     const [blog_desc, setblog_desc] = useState('');
     const [blog_category, setblog_category] = useState('');
     const [blog_image, setblog_image] = useState('');
+    const [blog_price, setblog_price] = useState('');
+    const [donor_image, setdonor_image] = useState('');
+    const [donor_name, setdonor_name] = useState('');
     
     const [message, setMessage] = useState('');
 
@@ -25,6 +28,10 @@ const CreateBlog = () => {
         data.append('blog_desc',blog_desc);
         data.append('blog_category',blog_category);
         data.append('blog_image',blog_image);
+        data.append('blog_price',blog_price);
+        data.append('donor_image',donor_image);
+        data.append('donor_name',donor_name);
+
         const config = {
             headers:{
                 Authorization : "Bearer " + localStorage.getItem('adminticket'),
@@ -77,7 +84,7 @@ const CreateBlog = () => {
         id="shortDesc"
 		onChange={(e) => {setshort_desc(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
-        name="title" placeholder="Insert Short Description" autoFocus required />
+        name="title" placeholder="Insert Short Description" required />
 	</div>
 	
 	
@@ -87,7 +94,7 @@ const CreateBlog = () => {
         id="blogDesc"
 		onChange={(e) => {setblog_desc(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
-        name="title" placeholder="Insert Description." autoFocus required resize/>
+        name="title" placeholder="Insert Description." required resize/>
 	</div>
 
 	<div>
@@ -98,12 +105,35 @@ const CreateBlog = () => {
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
         name="title" placeholder="Insert Category" required/>
 	</div>
-
-  
-  
-	<label class="text-gray-600 font-medium" for="file_input">Upload file</label>
+    
+    <div>
+		<label className="text-gray-600 font-medium">Blog Price</label>
+		<input 
+        id="blogPrice"
+		onChange={(e) => {setblog_price(e.target.value)}}
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Blog Price" required/>
+	</div>
+    
+    <label class="text-gray-600 font-medium" for="file_input">Blog Image</label>
 	<input 
 	onChange={(e) => {setblog_image(e.target.files[0])}}
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+    id="file_input" type="file" required/>
+    
+    <div>
+		<label className="text-gray-600 font-medium">Donor Name</label>
+		<input 
+        id="donorName"
+		onChange={(e) => {setdonor_name(e.target.value)}}
+		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
+        name="title" placeholder="Insert Donor Name" required/>
+	</div>
+  
+
+    <label class="text-gray-600 font-medium" for="file_input">Donor Image</label>
+	<input 
+	onChange={(e) => {setdonor_image(e.target.files[0])}}
 	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700"
     id="file_input" type="file" required/>
 	
