@@ -73,10 +73,10 @@ const Parnter = () => {
                 Partner Name</th>
               <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                Partner Category</th>
-              {/* <th
+                Banner Image</th>
+              <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                Created_At</th> */}
+                Partner Category</th>
               <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3">
                 Action</th>
             </tr>
@@ -96,14 +96,17 @@ const Parnter = () => {
                 <div class="text-sm leading-5 text-gray-900">{singleData.partner_name}
                 </div>
               </td>
+              <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+              <div class="flex items-center">
+                <img className="object-scale-down h-20 w-20 transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl"  src={"http://localhost:90/" + singleData.banner_image}/>
+                </div>
+              </td>
 
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <p>{singleData.partner_category}</p>
               </td>
 
-              {/* <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                <span>12/12/22</span>
-              </td> */}
+             
               <td class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200 ">
                 <Link to={'/dashboard/partner/update/'+singleData._id} class="text-indigo-600 hover:text-indigo-900">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"

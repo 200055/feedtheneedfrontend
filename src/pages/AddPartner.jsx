@@ -9,6 +9,7 @@ const AddPartner = () => {
     const [partner_name, setpartner_name] = useState('');
     const [partner_category, setpartner_category] = useState('');
     const [partner_image, setpartner_image] = useState('');
+    const [banner_image, setbanner_image] = useState('');
     const [message, setMessage] = useState('');
 
 	
@@ -19,6 +20,7 @@ const AddPartner = () => {
         data.append('partner_name',partner_name);
         data.append('partner_category',partner_category);
         data.append('partner_image',partner_image);
+        data.append('banner_image',banner_image);
         const config = {
             headers:{
                 Authorization : "Bearer " + localStorage.getItem('adminticket'),
@@ -75,6 +77,12 @@ const AddPartner = () => {
 	<label class="text-gray-600 font-medium text-xl" for="file_input">Partner Image</label>
 	<input 
 	onChange={(e) => {setpartner_image(e.target.files[0])}}
+	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
+    id="file_input" type="file" required/>
+
+    <label class="text-gray-600 font-medium text-xl" for="file_input">Banner Image</label>
+	<input 
+	onChange={(e) => {setbanner_image(e.target.files[0])}}
 	class="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
     id="file_input" type="file" required/>
 	
