@@ -11,7 +11,6 @@ const Blog = () => {
     useEffect(() => {
         axios.get("http://localhost:90/blog")
             .then(result => {
-                console.log(result)
                 setDetails(result.data)
             })
             .catch(e => {
@@ -79,6 +78,9 @@ const Blog = () => {
                 Blog Price</th>
                 <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                Donor Name</th>
+                <th
+                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                 Donor Image</th>
               <th class="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3">
                 Action</th>
@@ -106,6 +108,10 @@ const Blog = () => {
 
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <p>{singleData.blog_price}</p>
+              </td>
+
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <p>{singleData.donor_name}</p>
               </td>
 
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
