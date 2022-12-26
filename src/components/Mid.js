@@ -14,13 +14,15 @@ import ChangePassword from '../pages/ChangePassword';
 import Parnter from '../pages/Partner';
 import AddPartner from '../pages/AddPartner';
 import UpdatePartner from '../pages/UpdatePartner';
+import LoginAsStaff from './LoginAsStaff';
 
 const Mid=()=>{
     return(
         <>
             <Routes>
                 <Route path='/' element = {<Login/>} />
-
+                <Route path='/staff' element = {<LoginAsStaff/>} />
+                
                 <Route path="/dashboard" element={<Layout />}>
                     <Route index element={<Dashboard />} />
 

@@ -20,14 +20,14 @@ const ChangePassword = () => {
 			newPassword: newPassword,
 			confirmNewPassword: confirmNewPassword,
 	}
-        const config = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('adminticket'),
+        
+        if (localStorage.getItem('adminticket')){
+            const config = {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem('adminticket'),
+                }
             }
-        }
-        console.log(data)
-
-        axios.post("http://localhost:90/admin/changepassword", data, config)
+            return axios.post("http://localhost:90/admin/changepassword", data, config)
             .then((response => {
                 if (response.data.msg === "Password successfully updated!") {
                     setMessage("Password Updated")
@@ -67,6 +67,56 @@ const ChangePassword = () => {
 				
             }))
             .catch()
+        }
+        if (localStorage.getItem('staffticket')){
+            const config = {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem('staffticket'),
+                }
+            }
+            return axios.post("http://localhost:90/staff/changepassword", data, config)
+            .then((response => {
+                if (response.data.msg === "Password successfully updated!") {
+                    setMessage("Password Updated")
+					toast.success("Password Updated",{
+						position:"bottom-right"
+					})
+                } 
+                else if(response.data.msg === "Current password is not a match"){
+                    setMessage("Password Doesnot match")
+					toast.error("Current Password Is Not Correct",{
+						position:"bottom-right"
+					})
+                }
+                else if(response.data.msg === "New passwords do not match"){
+                    setMessage("Password Doesnot match")
+					toast.error("New Password Doesnot match",{
+						position:"bottom-right"
+					})
+                }
+                else if(response.data.msg === "Password should be at least six characters"){
+                    setMessage("Password should be at least six characters")
+					toast.error("Password should be at least six characters",{
+						position:"bottom-right"
+					})
+                }
+                else if(response.data.msg === "New Password Cannot Be Same To Old"){
+                    setMessage("New Password Cannot Be Same To Old")
+					toast.error("New Password Cannot Be Same To Old",{
+						position:"bottom-right"
+					})
+                }
+                
+                else {
+                    setMessage("invalid")
+                }
+                console.log(response.data.msg);
+				
+            }))
+            .catch()
+        }
+
+        
     }
     return (
         <>

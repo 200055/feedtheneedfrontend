@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {Link} from "react-router-dom";
 
-const Login =()=>{
+const LoginAsStaff=()=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');;
@@ -17,11 +17,11 @@ const Login =()=>{
             password: password,
         }
         console.log(data)
-            axios.post("http://localhost:90/admin/login", data)
+            axios.post("http://localhost:90/staff/login", data)
             .then((response) => {
                 console.log(response.data.token)
                 if (response.data.token) {
-                    localStorage.setItem('adminticket', response.data.token)
+                    localStorage.setItem('staffticket', response.data.token)
                     toast.success("Logging in",{
 						position:"top-center"
 					})
@@ -43,7 +43,7 @@ const Login =()=>{
 
         <div class="min-h-screen flex flex-col items-center justify-center h-screen w-screen bg-gray-100">
         <div class="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
-            <div class="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login As Admin</div>
+            <div class="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login As Staff</div>
             <div class="relative mt-10 h-px bg-gray-300">
             <div class="absolute left-0 top-0 flex justify-center w-full -mt-2">
                 <span class="bg-white px-4 text-xs text-gray-500 uppercase">Login With Email</span>
@@ -94,21 +94,23 @@ const Login =()=>{
                     </span>
                 </button>
                 </div>
-                
-                <Link to ='/staff'>
+
+                <Link to ='/'>
                 <div class="flex w-full mt-4">
-                
                 <button type="button" id="loginasStaffBtn" class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded py-2 w-full transition duration-150 ease-in">
-                    <span class="mr-2 uppercase">Login As Staff</span>
+                
+                    <span class="mr-2 uppercase">Login As Admin</span>
                     <span>
                     <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     </span>
+                    
                 </button>
+               
                 </div>
                 </Link>
-                
+
                 <div>
                 <img src="img/login.png" alt="" />
                 </div>
@@ -122,4 +124,4 @@ const Login =()=>{
     )
 
 }
-export default Login;
+export default LoginAsStaff;

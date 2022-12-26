@@ -18,15 +18,18 @@ const Parnter = () => {
                 console.log(e)
             })
     }, [])
-    const config = {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('adminticket'),
-
-        }
-    }
+    
     const deletePartner = (partner_id) => {
+
+      if (localStorage.getItem('adminticket')){
+        const config = {
+          headers: {
+              Authorization: "Bearer " + localStorage.getItem('adminticket'),
+  
+          }
+      }
         console.log(partner_id);
-        axios
+        return axios
           .delete("http://localhost:90/partner/" + partner_id, config)
           .then((result) => {
             console.log(result);
@@ -45,6 +48,36 @@ const Parnter = () => {
             console.log(e);
           });
       }
+      if (localStorage.getItem('staffticket')){
+        const config = {
+          headers: {
+              Authorization: "Bearer " + localStorage.getItem('staffticket'),
+  
+          }
+        }
+        console.log(partner_id);
+        return axios
+          .delete("http://localhost:90/partner/staff/" + partner_id, config)
+          .then((result) => {
+            console.log(result);
+            if (result.data.success) {
+              toast.success("Partner Deleted",{
+						position:"bottom-right"
+					});
+              window.location.replace('/dashboard/partner');
+            } else {
+                toast.error("Partner Not Deleted",{
+                    position:"bottom-right"
+                });
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+
+       
+    }
     return (
         <>
         <DashboardStatsGrid />

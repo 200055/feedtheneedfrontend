@@ -12,40 +12,74 @@ const AddPartner = () => {
     const [banner_image, setbanner_image] = useState('');
     const [message, setMessage] = useState('');
 
-	
-
-    const AddBlog = (e) => {
+    const AddPartner = (e) => {
         e.preventDefault()
-        const data = new FormData();
-        data.append('partner_name',partner_name);
-        data.append('partner_category',partner_category);
-        data.append('partner_image',partner_image);
-        data.append('banner_image',banner_image);
-        const config = {
-            headers:{
-                Authorization : "Bearer " + localStorage.getItem('adminticket'),
+
+        if(localStorage.getItem('adminticket')){
+            const data = new FormData();
+            data.append('partner_name',partner_name);
+            data.append('partner_category',partner_category);
+            data.append('partner_image',partner_image);
+            data.append('banner_image',banner_image);
+            const config = {
+                headers:{
+                    Authorization : "Bearer " + localStorage.getItem('adminticket'),
+                }
             }
+            
+           return axios.post("http://localhost:90/partner/insert", data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Partner added Sucessfully")
+                        toast.success("Partner added Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        
+                        window.location.replace('/dashboard/partner');
+                    }else{
+                        setMessage("Failed To Add Partner")
+                        toast.failed("Failed To Add Partner",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
+        }
+        if (localStorage.getItem('staffticket')) {
+            const data = new FormData();
+            data.append('partner_name',partner_name);
+            data.append('partner_category',partner_category);
+            data.append('partner_image',partner_image);
+            data.append('banner_image',banner_image);
+            const config = {
+                headers:{
+                    Authorization : "Bearer " + localStorage.getItem('staffticket'),
+                }
+            }
+            
+            return axios.post("http://localhost:90/partner/staff/insert", data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Partner added Sucessfully")
+                        toast.success("Partner added Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        
+                        window.location.replace('/dashboard/partner');
+                    }else{
+                        setMessage("Failed To Add Partner")
+                        toast.failed("Failed To Add Partner",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
         }
         
-        axios.post("http://localhost:90/partner/insert", data,config)
-            .then((response => {
-                if(response.data.msg !=="Invalid Token"){
-					
-                    setMessage(" Partner added Sucessfully")
-					toast.success("Partner added Sucessfully",{
-						position:"bottom-right"
-					})
-                    
-                    window.location.replace('/dashboard/partner');
-                }else{
-                    setMessage("Failed To Add Partner")
-					toast.failed("Failed To Add Partner",{
-						position:"bottom-right"
-					})
-                }
-                console.log(response.data.msg);
-            }))
-            .catch()
     }
     return (
         <>
@@ -54,7 +88,7 @@ const AddPartner = () => {
 		</div>
         <form
   className="forbox w-full max-w-2xl h-fit max-h-lg m-auto py-10 mt-10 px-10 border rounded-lg flex flex-col gap-4"
-  onSubmit={AddBlog}
+  onSubmit={AddPartner}
 >
 	
 	<div className="text-gray-600 font-medium text-3xl">Add Partner</div>

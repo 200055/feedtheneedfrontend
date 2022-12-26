@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { format } from 'date-fns'
 import { Link } from 'react-router-dom'
 import { getOrderStatus } from '../lib/helpers'
+import axios from "axios";
 
 const recentOrderData = [
 	{
@@ -67,15 +68,28 @@ const recentOrderData = [
 ]
 
 export default function RecentOrders() {
+
+	const [details,setDetails]= useState([]);
+	useEffect(() => {
+        axios.get("http://localhost:90/all_transaction")
+            .then(result => {
+                setDetails(result.data.data)
+				console.log(result.data.data)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }, [])
+
 	return (
 		<div className="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1">
 			<strong className="text-gray-700 font-medium">Recent Donations</strong>
 			<div className="border-x border-gray-200 rounded-sm mt-3">
-				<table className="w-full text-gray-700">
+				<table className="w-full text-gray-700 text-center table-auto border-spacing-y-5">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>Donation ID</th>
+							{/* <th>ID</th>
+							<th>Donation ID</th> */}
 							<th>Name</th>
 							<th>Donation Date</th>
 							<th>Total Donation</th>
@@ -84,21 +98,21 @@ export default function RecentOrders() {
 						</tr>
 					</thead>
 					<tbody>
-						{recentOrderData.map((order) => (
-							<tr key={order.id}>
-								<td>
+						{details.map((donation) => (
+							<tr>
+								{/* <td>
 									<Link to={`/order/Rs. {order.id}`}>#{order.id}</Link>
-								</td>
-								<td>
+								</td> */}
+								{/* <td>
 									<Link to={`/product/Rs. {order.donation_id}`}>#{order.donation_id}</Link>
-								</td>
+								</td> */}
 								<td>
-									<Link to={`/customer/Rs. {order.customer_id}`}>{order.customer_name}</Link>
+									<Link to={`/customer/Rs. {order.customer_id}`}>{donation.donor_name}</Link>
 								</td>
-								<td>{format(new Date(order.donation_date), 'dd MMM yyyy')}</td>
-								<td>{order.donation_amount}</td>
-								<td>{order.customer_address}</td>
-								<td>{getOrderStatus(order.donation_status)}</td>
+								<td>{format(new Date(donation.created_at), 'dd MMM yyyy')}</td>
+								<td>Rs.{donation.donation_amount}</td>
+								<td>{donation.donor_address}</td>
+								<td>{getOrderStatus(donation.donation_status)}</td>
 							</tr>
 						))}
 					</tbody>

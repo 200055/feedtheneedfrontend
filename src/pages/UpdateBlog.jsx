@@ -64,6 +64,7 @@ const UpdateBlog = () => {
 					toast.success("Blog updated Sucessfully",{
 						position:"bottom-right"
 					})
+                    
                     window.location.replace('/dashboard/blog');
 
                 }else{
@@ -130,7 +131,7 @@ const UpdateBlog = () => {
         value={blog_price}
 		onChange={(e) => {setblog_price(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
-        name="title" placeholder="Insert Description." required />
+        name="title" placeholder="Insert Blog Price." required />
 	</div>
   
   

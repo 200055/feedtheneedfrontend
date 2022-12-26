@@ -32,13 +32,41 @@ const CreateBlog = () => {
         data.append('donor_image',donor_image);
         data.append('donor_name',donor_name);
 
-        const config = {
-            headers:{
-                Authorization : "Bearer " + localStorage.getItem('adminticket'),
+        if (localStorage.getItem('adminticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('adminticket'),
+      
+              }
+          }
+          return axios.post("http://localhost:90/blog/insert", data,config)
+          .then((response => {
+              if(response.data.msg !=="Invalid Token"){
+                  
+                  setMessage(" Blog added Sucessfully")
+                  toast.success("Blog added Sucessfully",{
+                      position:"bottom-right"
+                  })
+                  
+                  window.location.replace('/dashboard/blog');
+              }else{
+                  setMessage("Failed To Add Product")
+                  toast.error("Failed To Add Product",{
+                      position:"bottom-right"
+                  })
+              }
+              console.log(response.data.msg);
+          }))
+          .catch()
+          }
+          if (localStorage.getItem('staffticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('staffticket'),
+      
+              }
             }
-        }
-        
-        axios.post("http://localhost:90/blog/insert", data,config)
+            return axios.post("http://localhost:90/blog/insert/staff/", data,config)
             .then((response => {
                 if(response.data.msg !=="Invalid Token"){
 					
@@ -50,13 +78,14 @@ const CreateBlog = () => {
                     window.location.replace('/dashboard/blog');
                 }else{
                     setMessage("Failed To Add Product")
-					toast.failed("Failed To Add Product",{
+					toast.error("Failed To Add Product",{
 						position:"bottom-right"
 					})
                 }
                 console.log(response.data.msg);
             }))
             .catch()
+          }
     }
     return (
         <>

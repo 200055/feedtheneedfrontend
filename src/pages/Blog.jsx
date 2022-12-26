@@ -24,9 +24,43 @@ const Blog = () => {
         }
     }
     const deleteBlog = (blog_id) => {
+      if (localStorage.getItem('adminticket')){
+        const config = {
+          headers: {
+              Authorization: "Bearer " + localStorage.getItem('adminticket'),
+  
+          }
+      }
         console.log(blog_id);
-        axios
+        return axios
           .delete("http://localhost:90/blog/" + blog_id, config)
+          .then((result) => {
+            console.log(result);
+            if (result.data.success) {
+              toast.success("Blog Deleted",{
+            position:"bottom-right"
+          });
+              window.location.replace('/dashboard/blog');
+            } else {
+                toast.error("Blog Not Deleted",{
+                    position:"bottom-right"
+                });
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+      if (localStorage.getItem('staffticket')){
+        const config = {
+          headers: {
+              Authorization: "Bearer " + localStorage.getItem('staffticket'),
+  
+          }
+        }
+        console.log(blog_id);
+        return axios
+          .delete("http://localhost:90/blog/staff/" + blog_id, config)
           .then((result) => {
             console.log(result);
             if (result.data.success) {
@@ -43,6 +77,8 @@ const Blog = () => {
           .catch((e) => {
             console.log(e);
           });
+      }
+        
       }
     return (
         <>
