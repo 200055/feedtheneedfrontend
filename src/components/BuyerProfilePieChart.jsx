@@ -1,14 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts'
+import axios from 'axios'
 
-const data = [
-	{ name: 'Male', value: 540 },
-	{ name: 'Female', value: 620 },
-	{ name: 'Other', value: 210 }
-]
 
 const RADIAN = Math.PI / 180
-const COLORS = ['#00C49F', '#FFBB28', '#FF8042']
+const COLORS = ['#00C49F', 'RED','#41A2CD', '#FF8042',]
 
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
 	const radius = innerRadius + (outerRadius - innerRadius) * 0.5
@@ -23,30 +19,75 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 }
 
 export default function BuyerProfilePieChart() {
+	const [details, setDetails] = useState([])
+	const [error, setError] = useState('')
+  
+	useEffect(() => {
+	  axios.get("http://localhost:90/all_transaction")
+		.then(result => {
+		  setDetails(result.data.data)
+		})
+		.catch(error => {
+		  setError(error.message)
+		})
+	}, [])
+  
+	const data = details.reduce((acc, item) => {
+		let existingItem = acc.find(i => i.name === item.donation_status)
+		if (existingItem) {
+		  existingItem.value += 1
+		} else {
+		  let color
+		  switch (item.donation_status) {
+			case "Received":
+			  color = "#00C49F"
+			  break
+			case "Pending":
+			  color = "RED"
+			  break
+			case "Used":
+			  color = "#41A2CD"
+			  break
+			case "Unused":
+			  color = "#FF8042"
+			  break
+			default:
+			  color = "black"
+		  }
+		  acc.push({
+			name: item.donation_status,
+			value: 1,
+			fill: color
+		  })
+		}
+		return acc
+	  }, [])
+	  console.log(data)
+  
 	return (
-		<div className="w-[20rem] h-[22rem] bg-white p-4 rounded-sm border border-gray-200 flex flex-col">
-			<strong className="text-gray-700 font-medium">Donate Gender Division</strong>
-			<div className="mt-3 w-full flex-1 text-xs">
-				<ResponsiveContainer width="100%" height="100%">
-					<PieChart width={400} height={300}>
-						<Pie
-							data={data}
-							cx="50%"
-							cy="45%"
-							labelLine={false}
-							label={renderCustomizedLabel}
-							outerRadius={105}
-							fill="#8884d8"
-							dataKey="value"
-						>
-							{data.map((_, index) => (
-								<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-							))}
-						</Pie>
-						<Legend />
-					</PieChart>
-				</ResponsiveContainer>
-			</div>
+	  <div className="w-[20rem] h-[22rem] bg-white p-4 rounded-sm border border-gray-200 flex flex-col">
+		<strong className="text-gray-700 font-medium">Overall Donation Status</strong>
+		<div className="mt-3 w-full flex-1 text-xs">
+		  <ResponsiveContainer width="100%" height="100%">
+			<PieChart width={400} height={300}>
+			  <Pie
+				data={data}
+				cx="50%"
+				cy="45%"
+				labelLine={false}
+				label={renderCustomizedLabel}
+				outerRadius={105}
+				fill="#8884d8"
+				dataKey="value"
+			  >
+				{data.map((entry, index) => (
+				<Cell key={`cell-${index}`} fill={entry.fill} />
+				))}
+			  </Pie>
+			  <Legend />
+			</PieChart>
+		  </ResponsiveContainer>
 		</div>
+	  </div>
 	)
-}
+  }

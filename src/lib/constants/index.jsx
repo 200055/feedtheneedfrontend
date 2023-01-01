@@ -8,7 +8,8 @@ import {
 	HiOutlineMap,
 	HiOutlineQuestionMarkCircle,
 	HiBadgeCheck,
-	HiOutlineCog
+	HiOutlineCog,
+	HiOutlineReceiptRefund
 } from 'react-icons/hi'
 
 var menu;
@@ -22,8 +23,14 @@ if (localStorage.getItem('adminticket')){
 		},
 		{	
 			key: 'addstaff',
-			label: 'Add Staff',
+			label: 'Staff',
 			path: '/dashboard/viewstaff',
+			icon: <HiOutlineUsers />
+		},
+		{	
+			key: 'users',
+			label: 'Users',
+			path: '/dashboard/viewuser',
 			icon: <HiOutlineUsers />
 		},
 		{
@@ -37,6 +44,12 @@ if (localStorage.getItem('adminticket')){
 			label: 'Partner',
 			path: '/dashboard/partner',
 			icon: <HiBadgeCheck />
+		},
+		{
+			key: 'refundrequest',
+			label: 'Refund Requests',
+			path: '/dashboard/refund_requests',
+			icon: <HiOutlineReceiptRefund />
 		},
 		{
 			key: 'contact',
@@ -61,6 +74,12 @@ if (localStorage.getItem('staffticket')){
 		label: 'Dashboard',
 		path: '/dashboard',
 		icon: <HiOutlineViewGrid />
+	},
+	{	
+		key: 'users',
+		label: 'Users',
+		path: '/dashboard/viewuser',
+		icon: <HiOutlineUsers />
 	},
 	{
 		key: 'blog',

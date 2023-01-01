@@ -41,7 +41,7 @@ const Login =()=>{
         <>
         <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" />
 
-        <div class="min-h-screen flex flex-col items-center justify-center h-screen w-screen bg-gray-100">
+        <div class="min-h-screen flex flex-col items-center justify-center h-screen w-screen bg-gray-100" style={{backgroundImage: "url('./img/login.png')"}}>
         <div class="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
             <div class="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login As Admin</div>
             <div class="relative mt-10 h-px bg-gray-300">

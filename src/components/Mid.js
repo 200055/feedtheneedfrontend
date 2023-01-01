@@ -15,6 +15,9 @@ import Parnter from '../pages/Partner';
 import AddPartner from '../pages/AddPartner';
 import UpdatePartner from '../pages/UpdatePartner';
 import LoginAsStaff from './LoginAsStaff';
+import User from '../pages/User';
+import ViewUserTransaction from '../pages/ViewUserTransaction';
+import RefundRequest from '../pages/RefundRequest';
 
 const Mid=()=>{
     return(
@@ -30,6 +33,9 @@ const Mid=()=>{
                     <Route path="/dashboard/addstaff" element={<AddStaff />} />
                     <Route path="/dashboard/viewstaff" element={<ViewStaff />} />
 
+                    {/* USER */}
+                    <Route path="/dashboard/viewuser" element={<User />} />
+                    <Route path="/dashboard/viewuser/user_transaction/:user_id" element={<ViewUserTransaction />} />
 
                     {/* BLOG */}
                     <Route path="/dashboard/blog" element={<Blog />} />
@@ -42,6 +48,7 @@ const Mid=()=>{
                     <Route path="/dashboard/partner/update/:partner_id" element={<UpdatePartner />} />
 
                     {/* Help and Support */}
+                    <Route path="/dashboard/refund_requests" element={<RefundRequest />} />
                     <Route path="/dashboard/contact" element={<Contact />} />
                     <Route path="/dashboard/map" element={<Map />} />
 
