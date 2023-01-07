@@ -1,25 +1,35 @@
-import React, { useState,useEffect } from 'react'
-import { format } from 'date-fns'
-import { Link } from 'react-router-dom'
-import { getOrderStatus } from '../lib/helpers'
-import { ToastContainer, toast } from 'react-toastify'
+import React, { useState,useEffect } from 'react';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
+import { getOrderStatus } from '../lib/helpers';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
+import ReactPaginate from 'react-paginate';
 
 
 export default function RecentOrders() {
 
 	const [details,setDetails]= useState([]);
+	const [totalPages, setTotalPages] = useState(0);
+	const [currentPage, setCurrentPage] = useState(0);
+	const [pagination, setPagination] = useState({
+		page: 1,
+		perPage: 7
+	});
 
 	useEffect(() => {
-        axios.get("http://localhost:90/all_transaction")
-            .then(result => {
-                setDetails(result.data.data)
-            })
-            .catch(e => {
-                console.log(e)
-            })
-    }, [])
-
+		axios.get(`http://localhost:90/all_transaction_pagination?page=${pagination.page}&perPage=${pagination.perPage}`)
+		  .then(result => {
+			setDetails(result.data.data);
+			setTotalPages(result.data.totalPages);  // Set total number of pages received from the backend
+		  })
+		  .catch(e => {
+			console.log(e);
+		  });
+	  }, [pagination.page]);
+	const handlePageClick = (data) => {
+	setPagination({ ...pagination, page: data.selected + 1 });
+	};
 	const donationReceived = (transcation_id) => {
 		
 		if (localStorage.getItem('adminticket')){
@@ -327,7 +337,30 @@ export default function RecentOrders() {
 						))}
 					</tbody>
 				</table>
-			</div>
+				<ReactPaginate
+				pageCount={totalPages} // total number of pages
+				pageRangeDisplayed={5} // number of page numbers to show
+				marginPagesDisplayed={2} // number of page numbers to show on either side of the current page
+				onPageChange={handlePageClick} // function to call when a page is clicked
+				containerClassName="flex justify-center" // class name for the pagination container
+				pageClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for page numbers
+				activeClassName="bg-blue-800 text-white" // class name for the active page
+				previousClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for the "previous" button
+				nextClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for the "next" button
+				/>
+				{/* <ReactPaginate
+				pageCount={Math.ceil(details.length / pagination.perPage)} // total number of pages
+				pageRangeDisplayed={5} // number of page numbers to show
+				marginPagesDisplayed={2} // number of page numbers to show on either side of the current page
+				onPageChange={(page) => setPagination({ ...pagination, page: page.selected })} // function to call when a page is clicked
+				containerClassName="flex justify-center" // class name for the pagination container
+				pageClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for page numbers
+				activeClassName="bg-blue-800 text-white" // class name for the active page
+				previousClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for the "previous" button
+				nextClassName="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" // class name for the "next" button
+				disabledClassName="opacity-50 cursor-not-allowed" // class name for disabled elements
+				/> */}
+			</div>	
 			<ToastContainer/>
 		</div>
 		

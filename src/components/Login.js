@@ -78,12 +78,6 @@ const Login =()=>{
                 </div>
                 </div>
 
-                <div class="flex items-center mb-6 -mt-4">
-                <div class="flex ml-auto">
-                    <a href="#" class="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</a>
-                </div>
-                </div>
-
                 <div class="flex w-full">
                 <button type="submit" id="loginBtn" class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded py-2 w-full transition duration-150 ease-in">
                     <span class="mr-2 uppercase">Login</span>

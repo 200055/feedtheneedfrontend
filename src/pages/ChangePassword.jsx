@@ -134,7 +134,7 @@ const ChangePassword = () => {
         id="currentPassword"
 		onChange={(e) => {setcurrentPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
-        name="title" placeholder="Insert Current Password" required/>
+        name="password" placeholder="Insert Current Password" required/>
 	</div>
 
 	<div>
@@ -143,7 +143,7 @@ const ChangePassword = () => {
         id="newPassword"
 		onChange={(e) => {setnewPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
-        name="title" placeholder="Insert New Password" required />
+        name="password" placeholder="Insert New Password" required />
 	</div>
 	<div>
         
@@ -152,7 +152,7 @@ const ChangePassword = () => {
         id="confirmNewPassword"
 		onChange={(e) => {setconfirmNewPassword(e.target.value)}}
 		className="border-solid border-gray-300 border h-14 py-2 px-4 w-full rounded-lg text-gray-700" 
-        name="title" placeholder="Insert Confirm New Password." required/>
+        name="password" placeholder="Insert Confirm New Password." required/>
 	</div>
 
   <button
