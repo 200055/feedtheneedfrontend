@@ -41,41 +41,84 @@ const UpdateBlog = () => {
 
     const Update = (e) => {
         e.preventDefault()
-        const data = new FormData();
-        data.append('blog_name',blog_name);
-        data.append('short_desc',short_desc);
-        data.append('blog_desc',blog_desc);
-        data.append('blog_category',blog_category);
-        data.append('blog_image',blog_image);
-        data.append('blog_price',blog_price);
-        data.append('donor_image',donor_image);
-        data.append('donor_name',donor_name);
-        const config = {
-            headers:{
-                Authorization : "Bearer " + localStorage.getItem('adminticket'),
+        if (localStorage.getItem('adminticket')){
+            const data = new FormData();
+            data.append('blog_name',blog_name);
+            data.append('short_desc',short_desc);
+            data.append('blog_desc',blog_desc);
+            data.append('blog_category',blog_category);
+            data.append('blog_image',blog_image);
+            data.append('blog_price',blog_price);
+            data.append('donor_image',donor_image);
+            data.append('donor_name',donor_name);
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('adminticket'),
+      
+              }
             }
-        }
+            axios.put("http://localhost:90/blog/update/"+ blog_id, data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Blog updated Sucessfully")
+                        toast.success("Blog updated Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        
+                        window.location.replace('/dashboard/blog');
+    
+                    }else{
+                        setMessage("Failed To Update Product")
+                        toast.failed("Failed To Update Product",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
+            
+          }
+          if (localStorage.getItem('staffticket')){
+            const data = new FormData();
+            data.append('blog_name',blog_name);
+            data.append('short_desc',short_desc);
+            data.append('blog_desc',blog_desc);
+            data.append('blog_category',blog_category);
+            data.append('blog_image',blog_image);
+            data.append('blog_price',blog_price);
+            data.append('donor_image',donor_image);
+            data.append('donor_name',donor_name);
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('staffticket'),
+      
+              }
+            }
+            axios.put("http://localhost:90/staff/blog/update/"+ blog_id, data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Blog updated Sucessfully")
+                        toast.success("Blog updated Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        
+                        window.location.replace('/dashboard/blog');
+    
+                    }else{
+                        setMessage("Failed To Update Product")
+                        toast.failed("Failed To Update Product",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
+            
+          }
         
-        axios.put("http://localhost:90/blog/update/"+ blog_id, data,config)
-            .then((response => {
-                if(response.data.msg !=="Invalid Token"){
-					
-                    setMessage(" Blog updated Sucessfully")
-					toast.success("Blog updated Sucessfully",{
-						position:"bottom-right"
-					})
-                    
-                    window.location.replace('/dashboard/blog');
-
-                }else{
-                    setMessage("Failed To Update Product")
-					toast.failed("Failed To Update Product",{
-						position:"bottom-right"
-					})
-                }
-                console.log(response.data.msg);
-            }))
-            .catch()
+        
     }
     return (
         <>

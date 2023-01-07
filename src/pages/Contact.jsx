@@ -38,33 +38,66 @@ const Contact = () => {
     }
     const updateContact = (e) => {
         e.preventDefault()
-		const data ={
-			company_name: company_name,
-			company_address: company_address,
-			company_phone: company_phone,
-			company_founded: company_founded
-	}
-        const config = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('adminticket'),
+        if (localStorage.getItem('adminticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('adminticket'),
+      
+              }
             }
-        }
-        console.log(data)
-
-        axios.put("http://localhost:90/contact/63830eec29a72c5c174768e4", data, config)
-            .then((response => {
-                if (response.data.msg === "Updated") {
-                    setMessage("Contacts Updated")
-					toast.success("Contacts Updated Successfully",{
-						position:"bottom-right"
-					})
-                } else {
-                    setMessage("invalid")
-                }
-                console.log(response.data.msg);
-				
-            }))
-            .catch()
+            const data ={
+                company_name: company_name,
+                company_address: company_address,
+                company_phone: company_phone,
+                company_founded: company_founded
+            }
+            axios.put("http://localhost:90/contact/63830eec29a72c5c174768e4", data, config)
+                .then((response => {
+                    if (response.data.msg === "Updated") {
+                        setMessage("Contacts Updated")
+                        toast.success("Contacts Updated Successfully",{
+                            position:"bottom-right"
+                        })
+                    } else {
+                        setMessage("invalid")
+                    }
+                    console.log(response.data.msg);
+                    
+                }))
+                .catch()
+            
+          }
+          if (localStorage.getItem('staffticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('staffticket'),
+      
+              }
+            }
+            const data ={
+                company_name: company_name,
+                company_address: company_address,
+                company_phone: company_phone,
+                company_founded: company_founded
+            }
+    
+            axios.put("http://localhost:90/staff/contact/63830eec29a72c5c174768e4", data, config)
+                .then((response => {
+                    if (response.data.msg === "Updated") {
+                        setMessage("Contacts Updated")
+                        toast.success("Contacts Updated Successfully",{
+                            position:"bottom-right"
+                        })
+                    } else {
+                        setMessage("invalid")
+                    }
+                    console.log(response.data.msg);
+                    
+                }))
+                .catch()
+            
+          }
+		
     }
     return (
         <>

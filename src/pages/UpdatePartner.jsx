@@ -32,6 +32,72 @@ const UpdatePartner = () => {
 
     const Update = (e) => {
         e.preventDefault()
+        if (localStorage.getItem('adminticket')){
+            const data = new FormData();
+            data.append('partner_name',partner_name);
+            data.append('partner_category',partner_category);
+            data.append('partner_image',partner_image);
+            data.append('banner_image',banner_image);
+            const config = {
+                headers:{
+                    Authorization : "Bearer " + localStorage.getItem('adminticket'),
+                }
+            }
+            
+            axios.put("http://localhost:90/partner/update/"+ partner_id, data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Partner updated Sucessfully")
+                        toast.success("Partner updated Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        window.location.replace('/dashboard/partner');
+
+                    }else{
+                        setMessage("Failed To Update Product")
+                        toast.failed("Failed To Update Product",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
+          }
+          if (localStorage.getItem('staffticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('staffticket'),
+      
+              }
+            }
+            const data = new FormData();
+            data.append('partner_name',partner_name);
+            data.append('partner_category',partner_category);
+            data.append('partner_image',partner_image);
+            data.append('banner_image',banner_image);
+            
+            axios.put("http://localhost:90/partner/staff/update/"+ partner_id, data,config)
+                .then((response => {
+                    if(response.data.msg !=="Invalid Token"){
+                        
+                        setMessage(" Partner updated Sucessfully")
+                        toast.success("Partner updated Sucessfully",{
+                            position:"bottom-right"
+                        })
+                        window.location.replace('/dashboard/partner');
+
+                    }else{
+                        setMessage("Failed To Update Product")
+                        toast.failed("Failed To Update Product",{
+                            position:"bottom-right"
+                        })
+                    }
+                    console.log(response.data.msg);
+                }))
+                .catch()
+            
+          }
         const data = new FormData();
         data.append('partner_name',partner_name);
         data.append('partner_category',partner_category);

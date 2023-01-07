@@ -33,32 +33,68 @@ const Contact = () => {
     }
     const updateMaps = (e) => {
         e.preventDefault()
-		const data ={
-			lat: lat,
-			long: long,
-	}
-        const config = {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('adminticket'),
+        if (localStorage.getItem('adminticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('adminticket'),
+      
+              }
             }
-        }
-        console.log(data)
-
-        axios.put("http://localhost:90/map/638c382d1c8a72fb3672cc71", data, config)
-            .then((response => {
-                if (response.data.msg === "Updated") {
-					console.log('add')
-                    setMessage("Maps Updated")
-					toast.success("Maps Updated Successfully",{
-						position:"bottom-right"
-					})
-                } else {
-                    setMessage("invalid")
-                }
-                console.log(response.data.msg);
-				
-            }))
-            .catch()
+            const data ={
+                lat: lat,
+                long: long,
+            }
+            console.log(data)
+    
+            axios.put("http://localhost:90/map/638c382d1c8a72fb3672cc71", data, config)
+                .then((response => {
+                    if (response.data.msg === "Updated") {
+                        console.log('add')
+                        setMessage("Maps Updated")
+                        toast.success("Maps Updated Successfully",{
+                            position:"bottom-right"
+                        })
+                    } else {
+                        setMessage("invalid")
+                    }
+                    console.log(response.data.msg);
+                    
+                }))
+                .catch()
+            
+          }
+          if (localStorage.getItem('staffticket')){
+            const config = {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem('staffticket'),
+      
+              }
+            }
+            const data ={
+                lat: lat,
+                long: long,
+            }
+      
+            console.log(data)
+    
+            axios.put("http://localhost:90/staff/map/638c382d1c8a72fb3672cc71", data, config)
+                .then((response => {
+                    if (response.data.msg === "Updated") {
+                        console.log('add')
+                        setMessage("Maps Updated")
+                        toast.success("Maps Updated Successfully",{
+                            position:"bottom-right"
+                        })
+                    } else {
+                        setMessage("invalid")
+                    }
+                    console.log(response.data.msg);
+                    
+                }))
+                .catch()
+            
+          }
+		
     }
     return (
         <>
